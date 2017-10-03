@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:scrollbars="vertical" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <android.support.v7.widget.SwitchCompat
+                android:id="@+id/swithcSandbox"
+                android:text="Sandbox"
+                android:drawablePadding="20dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                />
+
+
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+
+                <RadioButton
+                    android:id="@+id/radioTransferTrnRequest"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="Transfer trnRequest"
+                    android:layout_marginBottom="20dp" />
+
+                <RadioButton
+                    android:id="@+id/radioTransferTrnDirect"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:gravity="center_vertical"
+                    android:text="Transfer trnDirect"
+                    android:layout_marginBottom="20dp" />
+
+                <RadioButton
+                    android:id="@+id/radioTransferExpress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="Transfer express"
+                    android:layout_marginBottom="20dp" />
+
+                <RadioButton
+                    android:id="@+id/radioTransferPassage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="Transfer passage"
+                    android:layout_marginBottom="20dp" />
+
+            </RadioGroup>
+            <EditText
+                android:visibility="gone"
+                android:id="@+id/token"
+                android:hint="transaction token"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:visibility="gone"
+                android:id="@+id/url"
+                android:hint="transaction url"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:id="@+id/btnBuy"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Start"
+                android:height="70dp"/>
+
+            <TextView
+                android:id="@+id/txtStatus"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="#458B00"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text=""
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

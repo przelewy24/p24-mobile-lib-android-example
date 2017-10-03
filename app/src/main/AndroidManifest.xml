@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="pl.przelewy24.p24example" >
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="26" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
+
+    <application
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" android:allowBackup="true">
+        <activity
+            android:name=".P24ExampleActivity"
+            android:label="P24Example" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="pl.przelewy24.p24lib.settings.PaymentSettingsActivity"
+            android:configChanges="keyboardHidden|orientation|keyboard|screenSize"
+            android:theme="@style/P24MobileLibTheme" >
+        </activity>
+
+        <activity android:name="pl.przelewy24.p24lib.transfer.TransferActivity"
+            android:configChanges="keyboardHidden|orientation|keyboard|screenSize"
+            android:theme="@style/P24MobileLibTheme" >
+        </activity>
+
+    </application>
+
+</manifest>
