@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 import java.util.UUID;
 
-import pl.przelewy24.p24lib.settings.SettingsParams;
+import pl.przelewy24.p24lib.settings.SdkConfig;
 import pl.przelewy24.p24lib.transfer.TransferActivity;
 import pl.przelewy24.p24lib.transfer.TransferResult;
 import pl.przelewy24.p24lib.transfer.direct.TransactionParams;
@@ -36,7 +36,6 @@ public class P24ExampleActivity extends AppCompatActivity {
 
 	private SwitchCompat switchSandbox;
 	private RadioGroup radioGroup;
-	private SettingsParams settingsParams;
 	private EditText etToken;
 	private EditText etUrl;
 
@@ -53,8 +52,6 @@ public class P24ExampleActivity extends AppCompatActivity {
 		radioGroup = findViewById(R.id.radioGroup);
 		etToken = findViewById(R.id.token);
 		etUrl = findViewById(R.id.url);
-
-		initSettingsParams();
 
 		// start payment on button click
 		btnBuy.setOnClickListener(new View.OnClickListener() {
@@ -86,6 +83,8 @@ public class P24ExampleActivity extends AppCompatActivity {
 				radioChanged(radioGroup.getCheckedRadioButtonId());
 			}
 		});
+
+		SdkConfig.setCertificatePinningEnabled(true);
 	}
 
 	private void radioChanged(int checkedRadioButtonId) {
@@ -121,20 +120,13 @@ public class P24ExampleActivity extends AppCompatActivity {
 		switchSandbox.setVisibility(View.INVISIBLE);
 	}
 
-	private void initSettingsParams() {
-		settingsParams = new SettingsParams();
-		settingsParams.setSaveBankCredentials(true);
-		settingsParams.setReadSmsPasswords(true);
-	}
-
 	private void startTransferTrnRequest() {
 		if (TextUtils.isEmpty(etToken.getText())) {
 			showTokenError();
 		} else {
 			hideTokenError();
 			TrnRequestParams params = TrnRequestParams.create(etToken.getText().toString())
-					.setSandbox(switchSandbox.isChecked())
-					.setSettingsParams(settingsParams);
+					.setSandbox(switchSandbox.isChecked());
 
 			Intent intent = TransferActivity.getIntentForTrnRequest(this, params);
 			startActivityForResult(intent, TRANSFER_REQUEST_CODE);
@@ -143,8 +135,7 @@ public class P24ExampleActivity extends AppCompatActivity {
 
 	private void startTransferTrnDirect() {
 		TrnDirectParams params = TrnDirectParams.create(getTestPayment())
-				.setSandbox(switchSandbox.isChecked())
-				.setSettingsParams(settingsParams);
+				.setSandbox(switchSandbox.isChecked());
 
 		Intent intent = TransferActivity.getIntentForTrnDirect(this, params);
 		startActivityForResult(intent, TRANSFER_REQUEST_CODE);
@@ -155,8 +146,7 @@ public class P24ExampleActivity extends AppCompatActivity {
             showUrlError();
         } else {
             hideUrlError();
-            ExpressParams params = ExpressParams.create(etUrl.getText().toString())
-                    .setSettingsParams(settingsParams);
+            ExpressParams params = ExpressParams.create(etUrl.getText().toString());
 
             Intent intent = TransferActivity.getIntentForExpress(this, params);
             startActivityForResult(intent, TRANSFER_REQUEST_CODE);
@@ -165,8 +155,7 @@ public class P24ExampleActivity extends AppCompatActivity {
 
 	private void startTransferPassage() {
 		TrnDirectParams params = TrnDirectParams.create(getTestPaymentForPassage())
-				.setSandbox(switchSandbox.isChecked())
-				.setSettingsParams(settingsParams);
+				.setSandbox(switchSandbox.isChecked());
 
 		Intent intent = TransferActivity.getIntentForTrnDirect(this, params);
 		startActivityForResult(intent, TRANSFER_REQUEST_CODE);
