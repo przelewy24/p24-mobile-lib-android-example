@@ -14,7 +14,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical" >
 
-            <android.support.v7.widget.SwitchCompat
+            <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/swithcSandbox"
                 android:text="Sandbox"
                 android:drawablePadding="20dp"
@@ -65,6 +65,14 @@
                     android:gravity="center_vertical"
                     android:text="Transfer passage"
                     android:layout_marginBottom="20dp" />
+
+                <RadioButton
+                    android:id="@+id/radioGooglePay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="Google Pay"
+                    android:layout_marginBottom="10dp" />
 
             </RadioGroup>
             <EditText

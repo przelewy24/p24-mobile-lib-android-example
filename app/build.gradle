@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion "26.0.1"
+    compileSdkVersion 28
+    buildToolsVersion "28.0.3"
 
     defaultConfig {
         applicationId "pl.przelewy24.p24example"
         minSdkVersion 14
-        targetSdkVersion 26
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0.0"
     }
@@ -30,6 +30,7 @@ android {
 }
 
 dependencies {
-    compile project(':p24Lib')
-    compile 'com.android.support:appcompat-v7:26.0.1'
+    implementation project(':p24Lib')
+    implementation 'com.google.android.gms:play-services-wallet:16.0.1'
+    debugImplementation 'androidx.appcompat:appcompat:1.0.0-beta01'
 }

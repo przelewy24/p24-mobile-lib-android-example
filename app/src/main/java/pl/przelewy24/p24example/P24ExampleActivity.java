@@ -3,8 +3,8 @@ package pl.przelewy24.p24example;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.SwitchCompat;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -14,6 +14,10 @@ import android.widget.TextView;
 
 import java.util.UUID;
 
+import pl.przelewy24.p24lib.google_pay.GooglePayActivity;
+import pl.przelewy24.p24lib.google_pay.GooglePayParams;
+import pl.przelewy24.p24lib.google_pay.GooglePayResult;
+import pl.przelewy24.p24lib.google_pay.GooglePayTransactionRegistrar;
 import pl.przelewy24.p24lib.settings.SdkConfig;
 import pl.przelewy24.p24lib.transfer.TransferActivity;
 import pl.przelewy24.p24lib.transfer.TransferResult;
@@ -27,6 +31,7 @@ import pl.przelewy24.p24lib.transfer.request.TrnRequestParams;
 public class P24ExampleActivity extends AppCompatActivity {
 
 	private static final int TRANSFER_REQUEST_CODE = 28;
+	private static final int GOOGLE_PAY_REQUEST_CODE = 29;
 	private static final int TEST_MERCHANT_ID = 64195;
 	private static final String TEST_CRC_SANDBOX = "d27e4cb580e9bbfe";
 	private static final String TEST_CRC_SECURE = "b36147eeac447028";
@@ -72,6 +77,9 @@ public class P24ExampleActivity extends AppCompatActivity {
 						break;
 					case R.id.radioTransferPassage:
 						startTransferPassage();
+						break;
+					case R.id.radioGooglePay:
+						startGooglePay();
 						break;
 				}
 			}
@@ -161,7 +169,24 @@ public class P24ExampleActivity extends AppCompatActivity {
 		startActivityForResult(intent, TRANSFER_REQUEST_CODE);
 	}
 
-	public TransactionParams getTestPayment() {
+	private void startGooglePay() {
+		GooglePayParams params = GooglePayParams.create(TEST_MERCHANT_ID, 1, "PLN")
+				.setSandbox(switchSandbox.isChecked());
+
+		Intent intent = GooglePayActivity.getStartIntent(this, params, getGooglePayTrnRegistrar());
+		startActivityForResult(intent, GOOGLE_PAY_REQUEST_CODE);
+	}
+
+	private GooglePayTransactionRegistrar getGooglePayTrnRegistrar() {
+		return new GooglePayTransactionRegistrar() {
+			@Override
+			public void register(String methodRefId, GooglePayTransactionRegistrarCallback callback) {
+				callback.onTransactionRegistered("D3B5D31A55-0DD4D9-D7CA8F-FC02ECD7F0");
+			}
+		};
+	}
+
+	private TransactionParams getTestPayment() {
         TransactionParams.Builder builder = getTestPaymentBuilder();
 		return builder.build();
 	}
@@ -173,7 +198,7 @@ public class P24ExampleActivity extends AppCompatActivity {
 				.sessionId(generateSessionId())
 				.amount(1)
 				.currency("PLN")
-				.description("test payment desctiprion")
+				.description("test payment description")
 				.email("test@test.pl")
 				.country("PL")
 				.client("John Smith")
@@ -239,21 +264,40 @@ public class P24ExampleActivity extends AppCompatActivity {
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 
+		// handle payment result
 		if (requestCode == TRANSFER_REQUEST_CODE) {
+			onTransferResult(resultCode, data);
+		} else if (requestCode == GOOGLE_PAY_REQUEST_CODE) {
+			onGooglePayResult(resultCode, data);
+		}
+	}
 
-			// handle payment result
-			if (resultCode == RESULT_OK) {
-				TransferResult result = TransferActivity.parseResult(data);
+	private void onTransferResult(int resultCode, Intent data) {
+		if (resultCode == RESULT_OK) {
+			TransferResult result = TransferActivity.parseResult(data);
 
-				if (result.isSuccess()) {
-					showSuccess("Transfer success");
+			if (result.isSuccess()) {
+				showSuccess("Transfer success");
 
-				} else {
-					showError("Transfer error. Code: " + result.getErrorCode());
-				}
 			} else {
-				showCancel("Transfer canceled");
+				showError("Transfer error. Code: " + result.getErrorCode());
 			}
+		}
+		else {
+			showCancel("Transfer canceled");
+		}
+	}
+
+	private void onGooglePayResult(int resultCode, Intent data) {
+		if (resultCode == RESULT_OK) {
+			GooglePayResult result = GooglePayActivity.parseResult(data);
+			if (result.isError())
+				showError("Google Pay error. Code: " + result.getErrorCode());
+
+			if (result.isCompleted())
+				showSuccess("Google Pay completed");
+		} else {
+			showCancel("Google Pay canceled");
 		}
 	}
 
