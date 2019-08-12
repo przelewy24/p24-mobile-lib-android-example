@@ -41,6 +41,11 @@
             android:configChanges="keyboardHidden|orientation|keyboard|screenSize">
         </activity>
 
+        <activity
+            android:name="pl.przelewy24.p24lib.card.RegisterCardActivity"
+            android:configChanges="keyboardHidden|orientation|keyboard|screenSize">
+        </activity>
+
         <meta-data
             android:name="com.google.android.gms.wallet.api.enabled"
             android:value="true" />

@@ -14,6 +14,10 @@ import android.widget.TextView;
 
 import java.util.UUID;
 
+import pl.przelewy24.p24lib.card.CardData;
+import pl.przelewy24.p24lib.card.RegisterCardActivity;
+import pl.przelewy24.p24lib.card.RegisterCardParams;
+import pl.przelewy24.p24lib.card.RegisterCardResult;
 import pl.przelewy24.p24lib.google_pay.GooglePayActivity;
 import pl.przelewy24.p24lib.google_pay.GooglePayParams;
 import pl.przelewy24.p24lib.google_pay.GooglePayResult;
@@ -30,6 +34,7 @@ import pl.przelewy24.p24lib.transfer.request.TrnRequestParams;
 
 public class P24ExampleActivity extends AppCompatActivity {
 
+	private static final int CARD_REGISTER_REQUEST_CODE = 26;
 	private static final int TRANSFER_REQUEST_CODE = 28;
 	private static final int GOOGLE_PAY_REQUEST_CODE = 29;
 	private static final int TEST_MERCHANT_ID = 64195;
@@ -81,6 +86,9 @@ public class P24ExampleActivity extends AppCompatActivity {
 					case R.id.radioGooglePay:
 						startGooglePay();
 						break;
+					case R.id.radioRegisterCard:
+						startCardRegister();
+						break;
 				}
 			}
 		});
@@ -92,7 +100,7 @@ public class P24ExampleActivity extends AppCompatActivity {
 			}
 		});
 
-		SdkConfig.setCertificatePinningEnabled(true);
+		SdkConfig.setCertificatePinningEnabled(false);
 	}
 
 	private void radioChanged(int checkedRadioButtonId) {
@@ -103,6 +111,10 @@ public class P24ExampleActivity extends AppCompatActivity {
 				showTokenInput();
 				break;
 			case R.id.radioTransferExpress:
+				showUrlInput();
+				break;
+			case R.id.radioRegisterCard:
+				etUrl.setText("https://sandbox.przelewy24.pl/bundle/card?lang=PL&merchantId=46862&userId=y8vp5sf5wf&sessionId=1&sign=ce91e29bfdf708c2989f610cc955b5dc4b3fdb5619762d4332550c37d6e6a7b5f049ca3c9ad1e89977a7e82287bacdef");
 				showUrlInput();
 				break;
 			default:
@@ -185,6 +197,25 @@ public class P24ExampleActivity extends AppCompatActivity {
 			}
 		};
 	}
+
+	private void startCardRegister() {
+		if (TextUtils.isEmpty(etUrl.getText())) {
+			showUrlError();
+		} else {
+			hideUrlError();
+			CardData cardData = new CardData(
+					"1111111111111111",
+					4, 2021,
+					"452"
+			);
+
+//            RegisterCardParams params = RegisterCardParams.create(etUrl.getText().toString());
+			RegisterCardParams params = RegisterCardParams.createPrefilled(etUrl.getText().toString(), cardData);
+			Intent pIntent = RegisterCardActivity.getStartIntent(getApplicationContext(), params);
+			startActivityForResult(pIntent, CARD_REGISTER_REQUEST_CODE);
+		}
+	}
+
 
 	private TransactionParams getTestPayment() {
         TransactionParams.Builder builder = getTestPaymentBuilder();
@@ -269,6 +300,8 @@ public class P24ExampleActivity extends AppCompatActivity {
 			onTransferResult(resultCode, data);
 		} else if (requestCode == GOOGLE_PAY_REQUEST_CODE) {
 			onGooglePayResult(resultCode, data);
+		} else if (requestCode == CARD_REGISTER_REQUEST_CODE) {
+			onCardRegisterResult(resultCode, data);
 		}
 	}
 
@@ -298,6 +331,21 @@ public class P24ExampleActivity extends AppCompatActivity {
 				showSuccess("Google Pay completed");
 		} else {
 			showCancel("Google Pay canceled");
+		}
+	}
+
+	private void onCardRegisterResult(int resultCode, Intent data) {
+		if (resultCode == RESULT_OK) {
+			RegisterCardResult cardRegisterResult = RegisterCardActivity.parseResult(data);
+
+			if (cardRegisterResult.isError()) {
+				showError("Wystąpił błąd: Code: " + cardRegisterResult.getErrorCode());
+			} else {
+				showSuccess("karta zarejestrowana, token:" + cardRegisterResult.getCardToken());
+			}
+		}
+		else {
+			showCancel("Rejestracja karty anulowana");
 		}
 	}
 
