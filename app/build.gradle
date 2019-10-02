@@ -31,6 +31,7 @@ android {
 
 dependencies {
     implementation project(':p24Lib')
-    implementation 'com.google.android.gms:play-services-wallet:16.0.1'
-    debugImplementation 'androidx.appcompat:appcompat:1.0.0-beta01'
+    implementation 'com.google.android.gms:play-services-wallet:16.0.1' //necessary if google pay used
+    implementation 'com.google.android.gms:play-services-safetynet:+' //necessary if safetynet function enabled
+    implementation 'androidx.appcompat:appcompat:1.1.0'
 }
