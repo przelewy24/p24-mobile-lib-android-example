@@ -38,7 +38,6 @@ public class P24ExampleActivity extends AppCompatActivity {
 	private static final int TRANSFER_REQUEST_CODE = 28;
 	private static final int GOOGLE_PAY_REQUEST_CODE = 29;
 	private static final int TEST_MERCHANT_ID = 64195;
-	private static final String TEST_GOOGLE_MERCHANT_ID = "64195";
 	private static final String TEST_CRC_SANDBOX = "d27e4cb580e9bbfe";
 	private static final String TEST_CRC_SECURE = "b36147eeac447028";
 
@@ -183,7 +182,7 @@ public class P24ExampleActivity extends AppCompatActivity {
 	}
 
 	private void startGooglePay() {
-		GooglePayParams params = GooglePayParams.create(TEST_GOOGLE_MERCHANT_ID, 1, "PLN")
+		GooglePayParams params = GooglePayParams.create(TEST_MERCHANT_ID, 1, "PLN")
 				.setSandbox(switchSandbox.isChecked());
 
 		Intent intent = GooglePayActivity.getStartIntent(this, params, getGooglePayTrnRegistrar());
