@@ -1,1 +1,1 @@
-include ':app', ':p24Lib'
+include ':app'

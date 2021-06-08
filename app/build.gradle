@@ -1,13 +1,14 @@
 apply plugin: 'com.android.application'
+apply from: 'https://mobile.przelewy24.pl/p24lib.gradle'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 30
     buildToolsVersion "28.0.3"
 
     defaultConfig {
         applicationId "pl.przelewy24.p24example"
         minSdkVersion 19
-        targetSdkVersion 28
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0.0"
     }
@@ -27,10 +28,14 @@ android {
         abortOnError false
     }
 
+    repositories {
+        p24()
+    }
+
 }
 
 dependencies {
-    implementation project(':p24Lib')
+    implementation "pl.przelewy24:p24lib:+"
     implementation 'com.google.android.gms:play-services-wallet:16.0.1' //necessary if google pay used
     implementation 'com.google.android.gms:play-services-safetynet:+' //necessary if safetynet function enabled
     implementation 'androidx.appcompat:appcompat:1.1.0'
