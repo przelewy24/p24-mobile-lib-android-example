@@ -1,42 +1,43 @@
 apply plugin: 'com.android.application'
 apply from: 'https://mobile.przelewy24.pl/p24lib.gradle'
 
+repositories {
+    google()
+    mavenCentral()
+    p24()
+}
+
 android {
-    compileSdkVersion 30
-    buildToolsVersion "28.0.3"
+    namespace 'pl.przelewy24.p24example'
+
+    compileSdk = 36
 
     defaultConfig {
         applicationId "pl.przelewy24.p24example"
-        minSdkVersion 19
-        targetSdkVersion 30
+        minSdk 23
+        targetSdk 36
         versionCode 1
         versionName "1.0.0"
     }
-
+    
     buildTypes {
         release {
             minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
-
-            lintOptions {
-                checkReleaseBuilds false
-            }
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.txt'
         }
     }
 
-    lintOptions {
-        abortOnError false
-    }
+    buildToolsVersion "36.0.0"
 
-    repositories {
-        p24()
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
-
 }
 
 dependencies {
-    implementation "pl.przelewy24:p24lib:+"
-    implementation 'com.google.android.gms:play-services-wallet:16.0.1' //necessary if google pay used
-    implementation 'com.google.android.gms:play-services-safetynet:+' //necessary if safetynet function enabled
-    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'pl.przelewy24:p24lib:+'
+    implementation 'com.google.android.gms:play-services-wallet:19.5.0'
+    implementation 'androidx.appcompat:appcompat:1.7.1'
+    implementation 'com.google.android.material:material:1.13.0'
 }

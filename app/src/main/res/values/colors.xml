@@ -1,5 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Primary Colors (Material Design 3) -->
+    <color name="md_theme_primary">#C62531</color>
+    <color name="md_theme_onPrimary">#FFFFFF</color>
+    <color name="md_theme_primaryContainer">#FFDAD8</color>
+    <color name="md_theme_onPrimaryContainer">#410002</color>
+
+    <!-- Secondary Colors -->
+    <color name="md_theme_secondary">#4D6357</color>
+    <color name="md_theme_onSecondary">#FFFFFF</color>
+    <color name="md_theme_secondaryContainer">#CFE9D9</color>
+    <color name="md_theme_onSecondaryContainer">#092016</color>
+
+    <!-- Tertiary Colors -->
+    <color name="md_theme_tertiary">#3D6373</color>
+    <color name="md_theme_onTertiary">#FFFFFF</color>
+    <color name="md_theme_tertiaryContainer">#C1E8FB</color>
+    <color name="md_theme_onTertiaryContainer">#001F29</color>
+
+    <!-- Semantic Colors -->
+    <color name="color_success">#4CAF50</color>
+    <color name="color_success_container">#E8F5E9</color>
+    <color name="color_error">#F44336</color>
+    <color name="color_error_container">#FFEBEE</color>
+    <color name="color_cancel">#9E9E9E</color>
+    <color name="color_cancel_container">#F5F5F5</color>
+    <color name="color_warning">#FF9800</color>
+    <color name="color_warning_container">#FFE0B2</color>
+    <color name="color_info">#2196F3</color>
+    <color name="color_info_container">#BBDEFB</color>
+
+    <!-- Error Colors -->
+    <color name="md_theme_error">#BA1A1A</color>
+    <color name="md_theme_onError">#FFFFFF</color>
+    <color name="md_theme_errorContainer">#FFDAD6</color>
+    <color name="md_theme_onErrorContainer">#410002</color>
+
+    <!-- Background & Surface Colors -->
+    <color name="md_theme_background">#FBFDF9</color>
+    <color name="md_theme_onBackground">#191C1A</color>
+    <color name="md_theme_surface">#FBFDF9</color>
+    <color name="md_theme_onSurface">#191C1A</color>
+    <color name="md_theme_surfaceVariant">#DBE5DE</color>
+    <color name="md_theme_onSurfaceVariant">#404943</color>
+    <color name="md_theme_outline">#707973</color>
+
+    <!-- Card Colors -->
+    <color name="card_background">#FFFFFF</color>
+    <color name="card_elevated">#FFFFFF</color>
+    <color name="card_outline">#E0E0E0</color>
+
+    <!-- Input Colors -->
+    <color name="input_background">#F5F5F5</color>
+    <color name="input_focused">#C62531</color>
+    <color name="input_error">#BA1A1A</color>
+
+    <!-- Divider & Ripple Colors -->
+    <color name="divider">#E0E0E0</color>
+    <color name="divider_alpha">#1E000000</color>
+    <color name="ripple_light">#1F000000</color>
+    <color name="ripple_dark">#33FFFFFF</color>
+
+    <!-- Legacy Colors (for backward compatibility) -->
     <color name="actionBarBackground">#555</color>
     <color name="actionBarTextColor">#fff</color>
 </resources>

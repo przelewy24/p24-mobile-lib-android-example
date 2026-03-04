@@ -1,5 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- P24 Mobile Lib Theme (Legacy) -->
     <style name="P24MobileLibTheme" parent="Theme.AppCompat.Light.DarkActionBar">
 
         <item name="actionBarStyle">@style/P24MobileLibActionBarStyle</item>
@@ -13,6 +15,9 @@
 
     <style name="P24MobileLibTitleTextStyle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
         <item name="android:textColor">@color/actionBarTextColor</item>
+        <item name="android:gravity">bottom|center_vertical</item>
+        <item name="android:layout_gravity">bottom</item>
+        <item name="android:paddingBottom">0dp</item>
     </style>
 
 
@@ -28,9 +33,123 @@
         -->
     </style>
 
-    <!-- Application theme. -->
-    <style name="AppTheme" parent="AppBaseTheme">
-        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    <!-- Application theme - Material Components -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <!-- Transparent action bar for edge-to-edge mode -->
+        <item name="actionBarStyle">@style/TransparentActionBarStyle</item>
+        <!-- Material Design 3 Color Palette -->
+        <item name="colorPrimary">@color/md_theme_primary</item>
+        <item name="colorPrimaryDark">@color/md_theme_primary</item>
+        <item name="colorAccent">@color/md_theme_secondary</item>
+        <item name="colorOnPrimary">@color/md_theme_onPrimary</item>
+        <item name="colorPrimaryContainer">@color/md_theme_primaryContainer</item>
+        <item name="colorOnPrimaryContainer">@color/md_theme_onPrimaryContainer</item>
+        <item name="colorSecondary">@color/md_theme_secondary</item>
+        <item name="colorOnSecondary">@color/md_theme_onSecondary</item>
+        <item name="colorSecondaryContainer">@color/md_theme_secondaryContainer</item>
+        <item name="colorOnSecondaryContainer">@color/md_theme_onSecondaryContainer</item>
+        <item name="colorTertiary">@color/md_theme_tertiary</item>
+        <item name="colorOnTertiary">@color/md_theme_onTertiary</item>
+        <item name="colorTertiaryContainer">@color/md_theme_tertiaryContainer</item>
+        <item name="colorOnTertiaryContainer">@color/md_theme_onTertiaryContainer</item>
+        <item name="colorError">@color/md_theme_error</item>
+        <item name="colorOnError">@color/md_theme_onError</item>
+        <item name="colorErrorContainer">@color/md_theme_errorContainer</item>
+        <item name="colorOnErrorContainer">@color/md_theme_onErrorContainer</item>
+        <item name="android:colorBackground">@color/md_theme_background</item>
+        <item name="colorOnBackground">@color/md_theme_onBackground</item>
+        <item name="colorSurface">@color/md_theme_surface</item>
+        <item name="colorOnSurface">@color/md_theme_onSurface</item>
+        <item name="colorSurfaceVariant">@color/md_theme_surfaceVariant</item>
+        <item name="colorOnSurfaceVariant">@color/md_theme_onSurfaceVariant</item>
+        <item name="colorOutline">@color/md_theme_outline</item>
+    </style>
+
+    <!-- Solid action bar style for edge-to-edge mode -->
+    <style name="TransparentActionBarStyle" parent="Widget.AppCompat.Light.ActionBar.Solid.Inverse">
+        <item name="background">@color/md_theme_primary</item>
+        <item name="titleTextStyle">@style/P24MobileLibTitleTextStyle</item>
+    </style>
+
+    <!-- Typography Styles -->
+    <style name="TextAppearance.P24.DisplayLarge" parent="TextAppearance.MaterialComponents.Headline1">
+        <item name="android:textSize">@dimen/text_size_display_large</item>
+        <item name="android:lineSpacingExtra">7sp</item>
+    </style>
+
+    <style name="TextAppearance.P24.DisplayMedium" parent="TextAppearance.MaterialComponents.Headline2">
+        <item name="android:textSize">@dimen/text_size_display_medium</item>
+        <item name="android:lineSpacingExtra">7sp</item>
+    </style>
+
+    <style name="TextAppearance.P24.DisplaySmall" parent="TextAppearance.MaterialComponents.Headline3">
+        <item name="android:textSize">@dimen/text_size_display_small</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+    </style>
+
+    <style name="TextAppearance.P24.HeadlineLarge" parent="TextAppearance.MaterialComponents.Headline4">
+        <item name="android:textSize">@dimen/text_size_headline_large</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+    </style>
+
+    <style name="TextAppearance.P24.HeadlineMedium" parent="TextAppearance.MaterialComponents.Headline5">
+        <item name="android:textSize">@dimen/text_size_headline_medium</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+    </style>
+
+    <style name="TextAppearance.P24.HeadlineSmall" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="android:textSize">@dimen/text_size_headline_small</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+    </style>
+
+    <style name="TextAppearance.P24.TitleLarge" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="android:textSize">@dimen/text_size_title_large</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+    </style>
+
+    <style name="TextAppearance.P24.TitleMedium" parent="TextAppearance.MaterialComponents.Subtitle2">
+        <item name="android:textSize">@dimen/text_size_title_medium</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.P24.TitleSmall" parent="TextAppearance.MaterialComponents.Overline">
+        <item name="android:textSize">@dimen/text_size_title_small</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.P24.BodyLarge" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:textSize">@dimen/text_size_body_large</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+    </style>
+
+    <style name="TextAppearance.P24.BodyMedium" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="android:textSize">@dimen/text_size_body_medium</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+    </style>
+
+    <style name="TextAppearance.P24.BodySmall" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textSize">@dimen/text_size_body_small</item>
+        <item name="android:lineSpacingExtra">4sp</item>
+    </style>
+
+    <style name="TextAppearance.P24.LabelLarge" parent="TextAppearance.MaterialComponents.Button">
+        <item name="android:textSize">@dimen/text_size_label_large</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.P24.LabelMedium" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textSize">@dimen/text_size_label_medium</item>
+        <item name="android:lineSpacingExtra">4sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.P24.LabelSmall" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textSize">@dimen/text_size_label_small</item>
+        <item name="android:lineSpacingExtra">5sp</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
 </resources>

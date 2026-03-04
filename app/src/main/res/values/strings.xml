@@ -1,6 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+    <!-- App Name -->
     <string name="app_name">P24Example</string>
 
+    <!-- Toolbar -->
+    <string name="toolbar_title">P24 Payment Example</string>
+
+    <!-- Sandbox Switch -->
+    <string name="switch_sandbox">Sandbox Mode</string>
+    <string name="cd_switch_sandbox">Toggle sandbox mode for testing</string>
+
+    <!-- Payment Methods -->
+    <string name="card_title_payment_methods">Payment Methods</string>
+    <string name="radio_transfer_trn_request">Transfer trnRequest</string>
+    <string name="cd_radio_transfer_trn_request">Transfer using transaction request token</string>
+    <string name="radio_transfer_trn_direct">Transfer trnDirect</string>
+    <string name="cd_radio_transfer_trn_direct">Transfer using direct transaction parameters</string>
+    <string name="radio_transfer_express">Transfer Express</string>
+    <string name="cd_radio_transfer_express">Express transfer with predefined URL</string>
+    <string name="radio_transfer_passage">Transfer Passage</string>
+    <string name="cd_radio_transfer_passage">Passage transfer with cart items</string>
+    <string name="radio_rpc">RPC Method</string>
+    <string name="cd_radio_rpc">Remote Procedure Call method</string>
+    <string name="radio_google_pay">Google Pay</string>
+    <string name="cd_radio_google_pay">Pay with Google Pay</string>
+    <string name="radio_register_card">Register Card</string>
+    <string name="cd_radio_register_card">Register a new payment card</string>
+    <string name="radio_split_payment">Split Payment</string>
+    <string name="cd_radio_split_payment">Split payment into installments</string>
+
+    <!-- Input Fields -->
+    <string name="card_title_transaction_details">Transaction Details</string>
+    <string name="hint_transaction_token">Transaction Token</string>
+    <string name="cd_transaction_token">Enter your transaction token</string>
+    <string name="helper_transaction_token">The token received from the server</string>
+    <string name="hint_transaction_url">Transaction URL</string>
+    <string name="cd_transaction_url">Enter the transaction URL</string>
+    <string name="helper_transaction_url">The URL for express or card registration</string>
+    <string name="label_payment_method">Payment Method</string>
+    <string name="cd_payment_method">Enter payment method ID</string>
+    <string name="helper_payment_method">Optional: specify payment method ID</string>
+
+    <!-- Buttons -->
+    <string name="btn_start_payment">Start Payment</string>
+    <string name="cd_start_payment">Initiate the payment process</string>
+
+    <!-- Status Messages -->
+    <string name="status_success">Payment completed successfully</string>
+    <string name="status_error">Payment failed</string>
+    <string name="status_cancel">Payment canceled</string>
+    <string name="cd_status_message">Payment status message</string>
+
+    <!-- Error Messages -->
+    <string name="error_token_required">Transaction token is required</string>
+    <string name="error_url_required">Transaction URL is required</string>
+    <string name="error_invalid_token">Invalid transaction token</string>
+    <string name="error_invalid_url">Invalid transaction URL</string>
+
+    <!-- Success Messages -->
+    <string name="success_transfer">Transfer completed successfully</string>
+    <string name="success_card_registered">Card registered successfully</string>
+    <string name="success_rpc">RPC completed successfully</string>
+    <string name="success_google_pay">Google Pay completed successfully</string>
+    <string name="success_split_payment">Split payment completed successfully</string>
+
+    <!-- Cancel Messages -->
+    <string name="cancel_transfer">Transfer canceled by user</string>
+    <string name="cancel_card_register">Card registration canceled</string>
+    <string name="cancel_rpc">RPC canceled by user</string>
+    <string name="cancel_google_pay">Google Pay canceled by user</string>
+    <string name="cancel_split_payment">Split payment canceled by user</string>
+
+    <!-- Content Descriptions for Icons -->
+    <string name="cd_icon_payment">Payment icon</string>
+    <string name="cd_icon_check">Success checkmark</string>
+    <string name="cd_icon_error">Error icon</string>
+    <string name="cd_icon_warning">Warning icon</string>
+    <string name="cd_icon_info">Information icon</string>
 </resources>

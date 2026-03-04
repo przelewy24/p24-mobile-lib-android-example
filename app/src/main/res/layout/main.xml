@@ -1,123 +1,290 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical"
-    android:scrollbars="vertical" >
+    android:background="@color/md_theme_background"
+    android:fitsSystemWindows="true">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical" >
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/spacing_medium">
 
-            <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/swithcSandbox"
-                android:text="Sandbox"
-                android:drawablePadding="20dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                />
-
-
-            <RadioGroup
-                android:id="@+id/radioGroup"
+            <!-- Sandbox Switch Card -->
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" >
+                android:layout_marginBottom="@dimen/spacing_medium"
+                app:cardElevation="@dimen/card_elevation_resting"
+                app:cardCornerRadius="@dimen/card_corner_radius"
+                app:strokeWidth="@dimen/card_stroke_width"
+                app:strokeColor="@color/card_outline"
+                app:cardBackgroundColor="@color/card_background">
 
-
-                <RadioButton
-                    android:id="@+id/radioTransferTrnRequest"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:text="Transfer trnRequest"
-                    android:layout_marginBottom="20dp" />
+                    android:orientation="vertical"
+                    android:padding="@dimen/spacing_medium">
 
-                <RadioButton
-                    android:id="@+id/radioTransferTrnDirect"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="true"
-                    android:gravity="center_vertical"
-                    android:text="Transfer trnDirect"
-                    android:layout_marginBottom="20dp" />
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/switchSandbox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/switch_height"
+                        android:layout_gravity="center_horizontal"
+                        android:text="@string/switch_sandbox"
+                        android:textSize="@dimen/text_size_body_large"
+                        android:textColor="@color/md_theme_onSurface"
+                        android:thumbTint="@color/md_theme_primary"
+                        android:trackTint="@color/md_theme_secondaryContainer"
+                        android:minHeight="@dimen/switch_height"
+                        android:drawablePadding="@dimen/spacing_medium"
+                        android:contentDescription="@string/cd_switch_sandbox" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-                <RadioButton
-                    android:id="@+id/radioTransferExpress"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:text="Transfer express"
-                    android:layout_marginBottom="20dp" />
-
-                <RadioButton
-                    android:id="@+id/radioTransferPassage"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:text="Transfer passage"
-                    android:layout_marginBottom="20dp" />
-
-                <RadioButton
-                    android:id="@+id/radioGooglePay"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:text="Google Pay"
-                    android:layout_marginBottom="20dp" />
-
-                <RadioButton
-                    android:id="@+id/radioRegisterCard"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:text="register card"
-                    android:layout_marginBottom="10dp"/>
-
-
-            </RadioGroup>
-            <EditText
-                android:visibility="gone"
-                android:id="@+id/token"
-                android:hint="transaction token"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
+            <!-- Payment Methods Card -->
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_medium"
+                app:cardElevation="@dimen/card_elevation_resting"
+                app:cardCornerRadius="@dimen/card_corner_radius"
+                app:strokeWidth="@dimen/card_stroke_width"
+                app:strokeColor="@color/card_outline"
+                app:cardBackgroundColor="@color/card_background">
 
-            <EditText
-                android:visibility="gone"
-                android:id="@+id/url"
-                android:hint="transaction url"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/spacing_medium">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/card_title_payment_methods"
+                        android:textSize="@dimen/text_size_title_medium"
+                        android:textColor="@color/md_theme_onSurface"
+                        android:layout_marginBottom="@dimen/spacing_small" />
+
+                    <RadioGroup
+                        android:id="@+id/radioGroup"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/radioTransferTrnRequest"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/radio_button_height"
+                            android:layout_marginStart="@dimen/spacing_small"
+                            android:layout_marginEnd="@dimen/spacing_small"
+                            android:layout_marginBottom="@dimen/spacing_small"
+                            android:text="@string/radio_transfer_trn_request"
+                            android:textSize="@dimen/text_size_body_large"
+                            android:buttonTint="@color/md_theme_primary"
+                            android:contentDescription="@string/cd_radio_transfer_trn_request"
+                            app:useMaterialThemeColors="true" />
+
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/radioTransferTrnDirect"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/radio_button_height"
+                            android:layout_marginStart="@dimen/spacing_small"
+                            android:layout_marginEnd="@dimen/spacing_small"
+                            android:layout_marginBottom="@dimen/spacing_small"
+                            android:checked="true"
+                            android:text="@string/radio_transfer_trn_direct"
+                            android:textSize="@dimen/text_size_body_large"
+                            android:buttonTint="@color/md_theme_primary"
+                            android:contentDescription="@string/cd_radio_transfer_trn_direct"
+                            app:useMaterialThemeColors="true" />
+
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/radioTransferExpress"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/radio_button_height"
+                            android:layout_marginStart="@dimen/spacing_small"
+                            android:layout_marginEnd="@dimen/spacing_small"
+                            android:layout_marginBottom="@dimen/spacing_small"
+                            android:text="@string/radio_transfer_express"
+                            android:textSize="@dimen/text_size_body_large"
+                            android:buttonTint="@color/md_theme_primary"
+                            android:contentDescription="@string/cd_radio_transfer_express"
+                            app:useMaterialThemeColors="true" />
+
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/radioTransferPassage"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/radio_button_height"
+                            android:layout_marginStart="@dimen/spacing_small"
+                            android:layout_marginEnd="@dimen/spacing_small"
+                            android:layout_marginBottom="@dimen/spacing_small"
+                            android:text="@string/radio_transfer_passage"
+                            android:textSize="@dimen/text_size_body_large"
+                            android:buttonTint="@color/md_theme_primary"
+                            android:contentDescription="@string/cd_radio_transfer_passage"
+                            app:useMaterialThemeColors="true" />
+
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/radioGooglePay"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/radio_button_height"
+                            android:layout_marginStart="@dimen/spacing_small"
+                            android:layout_marginEnd="@dimen/spacing_small"
+                            android:layout_marginBottom="@dimen/spacing_small"
+                            android:text="@string/radio_google_pay"
+                            android:textSize="@dimen/text_size_body_large"
+                            android:buttonTint="@color/md_theme_primary"
+                            android:contentDescription="@string/cd_radio_google_pay"
+                            app:useMaterialThemeColors="true" />
+
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/radioRegisterCard"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/radio_button_height"
+                            android:layout_marginStart="@dimen/spacing_small"
+                            android:layout_marginEnd="@dimen/spacing_small"
+                            android:layout_marginBottom="@dimen/spacing_small"
+                            android:text="@string/radio_register_card"
+                            android:textSize="@dimen/text_size_body_large"
+                            android:buttonTint="@color/md_theme_primary"
+                            android:contentDescription="@string/cd_radio_register_card"
+                            app:useMaterialThemeColors="true" />
+
+                    </RadioGroup>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Transaction Details Card -->
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_medium"
+                app:cardElevation="@dimen/card_elevation_resting"
+                app:cardCornerRadius="@dimen/card_corner_radius"
+                app:strokeWidth="@dimen/card_stroke_width"
+                app:strokeColor="@color/card_outline"
+                app:cardBackgroundColor="@color/card_background">
 
-            <Button
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/spacing_medium">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/card_title_transaction_details"
+                        android:textSize="@dimen/text_size_title_medium"
+                        android:textColor="@color/md_theme_onSurface"
+                        android:layout_marginBottom="@dimen/spacing_small" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tokenInputLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/spacing_small"
+                        android:hint="@string/hint_transaction_token"
+                        app:boxBackgroundMode="outline"
+                        app:boxCornerRadiusBottomEnd="@dimen/input_corner_radius"
+                        app:boxCornerRadiusBottomStart="@dimen/input_corner_radius"
+                        app:boxCornerRadiusTopEnd="@dimen/input_corner_radius"
+                        app:boxCornerRadiusTopStart="@dimen/input_corner_radius"
+                        app:boxStrokeColor="@color/input_focused"
+                        app:boxStrokeWidth="@dimen/input_stroke_width_focused"
+                        app:helperText="@string/helper_transaction_token"
+                        app:errorEnabled="true"
+                        app:endIconMode="clear_text">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/token"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text"
+                            android:maxLines="1"
+                            android:contentDescription="@string/cd_transaction_token" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/urlInputLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/spacing_small"
+                        android:hint="@string/hint_transaction_url"
+                        app:boxBackgroundMode="outline"
+                        app:boxCornerRadiusBottomEnd="@dimen/input_corner_radius"
+                        app:boxCornerRadiusBottomStart="@dimen/input_corner_radius"
+                        app:boxCornerRadiusTopEnd="@dimen/input_corner_radius"
+                        app:boxCornerRadiusTopStart="@dimen/input_corner_radius"
+                        app:boxStrokeColor="@color/input_focused"
+                        app:boxStrokeWidth="@dimen/input_stroke_width_focused"
+                        app:helperText="@string/helper_transaction_url"
+                        app:errorEnabled="true"
+                        app:endIconMode="clear_text">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/url"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textUri"
+                            android:maxLines="1"
+                            android:contentDescription="@string/cd_transaction_url" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Start Payment Button -->
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnBuy"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="Start"
-                android:height="70dp"/>
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height"
+                android:layout_margin="@dimen/spacing_medium"
+                android:text="@string/btn_start_payment"
+                android:textSize="@dimen/text_size_label_large"
+                android:minHeight="@dimen/button_height_min"
+                app:cornerRadius="@dimen/button_corner_radius"
+                app:backgroundTint="@color/md_theme_primary"
+                app:iconGravity="textStart"
+                app:iconPadding="@dimen/button_icon_padding"
+                android:contentDescription="@string/cd_start_payment" />
 
-            <TextView
-                android:id="@+id/txtStatus"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:background="#458B00"
-                android:gravity="center"
-                android:padding="10dp"
-                android:text=""
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+            <!-- Status Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/statusCard"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_margin="@dimen/spacing_medium"
+                android:visibility="gone"
+                app:cardElevation="@dimen/card_elevation_resting"
+                app:cardCornerRadius="@dimen/status_bar_corner_radius"
+                app:cardBackgroundColor="@color/color_success_container">
+
+                <TextView
+                    android:id="@+id/txtStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical|start"
+                    android:paddingStart="@dimen/spacing_medium"
+                    android:paddingEnd="@dimen/spacing_medium"
+                    android:paddingTop="@dimen/spacing_small"
+                    android:paddingBottom="@dimen/spacing_small"
+                    android:text=""
+                    android:textSize="@dimen/text_size_body_large"
+                    android:textColor="@color/color_success"
+                    android:contentDescription="@string/cd_status_message" />
+            </com.google.android.material.card.MaterialCardView>
+
         </LinearLayout>
     </ScrollView>
 
